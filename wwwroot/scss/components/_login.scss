@@ -1,3 +1,4 @@
+
 .login-form {
     display: flex;
     align-items: center;
@@ -6,7 +7,7 @@
 
     @include lg {
         padding: 150px 0 130px 0;
-    } 
+    }
 
     .container {
         font-family: $font-roboto;
@@ -17,6 +18,9 @@
         border-radius: 5px;
         margin-top: 6vh;
         margin-bottom: 9vh;
+        color: #202020;
+
+
 
 
         .underline {
@@ -24,43 +28,45 @@
             border: 1px solid #C4C4C4;
             margin-bottom: 50px;
         }
+
         form {
             display: flex;
             flex-direction: column;
             align-items: start;
             gap: 50px;
+            color: #636363;
 
-        label {
-            margin-bottom: 0;
-        }
 
-        .email-text {
-            display: flex;
-            align-items: center;
-            
-            a{ 
-                text-decoration: none;
-                font-family: $font-roboto;
-                font-size: 14px;
-                color: $color-theme-1;
-                margin-left: 20px;
 
+            label {
+                margin-bottom: 0;
+                color: #636363;
             }
-        }
-        .password-text {
-            display: flex;
-            justify-content: space-between;
-            
-            a{ 
-                text-decoration: none;
-                font-family: $font-roboto;
-                font-size: 14px;
-                color: $color-theme-1;
+
+            .email-text {
+                display: flex;
+                align-items: center;
+
+                a {
+                    text-decoration: none;
+                    font-family: $font-roboto;
+                    font-size: 14px;
+                    color: $color-theme-1;
+                    margin-left: 20px;
+                }
             }
-        }
-            
+
+            .password-text {
+                display: flex;
+                justify-content: space-between;
+
+                a {
+                    text-decoration: none;
+                    font-family: $font-roboto;
+                    font-size: 14px;
+                    color: $color-theme-1;
+                }
+            }
         }
     }
-
 }
-

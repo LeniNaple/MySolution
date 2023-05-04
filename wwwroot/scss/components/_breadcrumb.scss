@@ -1,10 +1,17 @@
-.breadcrumb {
-    height: 200px;
+@import '../core/fonts';
+@import '../core/colors';
+@import '../core/mixins';
+
+
+._breadcrumb {
     text-align: center;
-    background-color: $color-dark-5;
+    height: 200px;
+    display: flex;
+    background: $color-dark-5;
 
     @include md {
         height: 300px;
+        width: 100%;
     }
 
     .container {

@@ -1,6 +1,9 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&display=swap");
 html, body {
   font-size: 16px;
   font-family: "Roboto", sans-serif;
@@ -474,29 +477,31 @@ footer .container {
   align-items: center;
 }
 
-.breadcrumb {
-  height: 200px;
+._breadcrumb {
   text-align: center;
-  background-color: #E1E1E1;
+  height: 200px;
+  display: flex;
+  background: #E1E1E1;
 }
 @media (min-width: 768px) {
-  .breadcrumb {
+  ._breadcrumb {
     height: 300px;
+    width: 100%;
   }
 }
-.breadcrumb .container {
+._breadcrumb .container {
   padding-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.breadcrumb h1 {
+._breadcrumb h1 {
   font-size: 30px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   color: #292929;
 }
-.breadcrumb ul {
+._breadcrumb ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -509,7 +514,7 @@ footer .container {
   gap: 10px;
   color: #292929;
 }
-.breadcrumb ul li {
+._breadcrumb ul li {
   padding: 0;
 }
 
@@ -945,6 +950,7 @@ footer .container {
 .contact-form .container {
   border: 0px solid #E1E1E1;
   padding: 30px;
+  color: #636363;
 }
 @media (min-width: 768px) {
   .contact-form .container {
@@ -960,6 +966,7 @@ footer .container {
   row-gap: 30px;
   grid-template-columns: 1fr;
   grid-template-areas: "name" "email" "phoneNumber" "companyName" "message" "terms" "button";
+  color: #636363;
 }
 @media (min-width: 992px) {
   .contact-form form {
@@ -1019,6 +1026,7 @@ footer .container {
   border-radius: 5px;
   margin-top: 6vh;
   margin-bottom: 9vh;
+  color: #202020;
 }
 .login-form .container .underline {
   width: 60px;
@@ -1030,9 +1038,11 @@ footer .container {
   flex-direction: column;
   align-items: start;
   gap: 50px;
+  color: #636363;
 }
 .login-form .container form label {
   margin-bottom: 0;
+  color: #636363;
 }
 .login-form .container form .email-text {
   display: flex;
@@ -1097,7 +1107,7 @@ footer .container {
   grid-area: profileImage;
 }
 .login-form .container form .form-grid label {
-  color: #000000;
+  color: #636363;
 }
 @media (min-width: 992px) {
   .login-form .container form .form-grid {
