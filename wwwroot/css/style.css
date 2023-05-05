@@ -948,13 +948,13 @@ footer .container {
   }
 }
 .contact-form .container {
-  border: 0px solid #E1E1E1;
   padding: 30px;
   color: #636363;
 }
 @media (min-width: 768px) {
   .contact-form .container {
-    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #E1E1E1;
   }
 }
 .contact-form .title {
@@ -1022,8 +1022,8 @@ footer .container {
   font-size: 16px;
   font-weight: 400;
   padding: 30px;
-  box-shadow: 0px 0px 3px #AEAEAE;
   border-radius: 5px;
+  box-shadow: 0px 0px 5px #E1E1E1;
   margin-top: 6vh;
   margin-bottom: 9vh;
   color: #202020;
