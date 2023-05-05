@@ -1,12 +1,24 @@
 ﻿@*Product Index*@
 
+@{
+
+    ViewData["Title"] = "Product";
+
+
+    var breadcrumb = new BreadcrumbViewModel()
+            {
+                Title = "SHOP",
+                UnderTitle1 = "HOME.",
+                UnderTitle2 = "PRODUCT DETAILS"
+
+            };
+}
+
 
 <partial name="/Views/Partials/_HeaderPartial.cshtml" />
 
 
-@*Has to show different text depending on page!*@
-@*SHOP - HOME. PRODUCT DETAILS*@
-<partial name="/Views/Partials/_BreadcrumbPartial.cshtml" />
+<partial name="/Views/Partials/_BreadcrumbPartial.cshtml" model="@breadcrumb" />
 
 
 <partial name="/Views/Partials/ProductPartials/_ProductDetailsPartial.cshtml" />
