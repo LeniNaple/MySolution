@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FinalSol.Models.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace FinalSol.ViewModels;
 
@@ -35,4 +36,17 @@ public class UserRegistrationViewModel
 
     public string? ProfileImageUrl { get; set; }
 
+
+    public static implicit operator CustomIdentityUser(UserRegistrationViewModel viewModel)
+    {
+        return new CustomIdentityUser
+        {
+            UserName = viewModel.Email,
+
+            FirstName = viewModel.FirstName,
+            LastName = viewModel.LastName,
+            Email = viewModel.Email,
+            PhoneNumber = viewModel.PhoneNumber
+        };
+    }
 }
