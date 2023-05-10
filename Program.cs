@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserSql")));
 
+
+
 builder.Services.AddIdentity<CustomIdentityUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

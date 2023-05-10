@@ -1,5 +1,7 @@
-﻿using FinalSol.Models.Identity;
+﻿using FinalSol.Models.Entities;
+using FinalSol.Models.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FinalSol.ViewModels;
 
@@ -36,6 +38,7 @@ public class UserRegistrationViewModel
 
     public string? ProfileImageUrl { get; set; }
 
+    public Guid AdressId { get; set; } = Guid.NewGuid();
 
     public static implicit operator CustomIdentityUser(UserRegistrationViewModel viewModel)
     {
@@ -45,7 +48,23 @@ public class UserRegistrationViewModel
             FirstName = viewModel.FirstName,
             LastName = viewModel.LastName,
             Email = viewModel.Email,
-            PhoneNumber = viewModel.PhoneNumber
+            PhoneNumber = viewModel.PhoneNumber,
+            AdressId = viewModel.AdressId,
         };
     }
+
+    public static implicit operator UserEntity(UserRegistrationViewModel viewModel)
+    {
+        return new UserEntity
+        {
+            UserId = viewModel.AdressId,
+            StreetName = viewModel.StreetName,
+            PostalCode = viewModel.PostalCode,
+            City = viewModel.City,
+            CompanyName = viewModel.CompanyName,
+            ProfileImageUrl = viewModel.ProfileImageUrl
+        };
+    }
+
+
 }

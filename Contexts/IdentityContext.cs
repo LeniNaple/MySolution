@@ -1,4 +1,5 @@
-﻿using FinalSol.Models.Identity;
+﻿using FinalSol.Models.Entities;
+using FinalSol.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,6 @@ public class IdentityContext : IdentityDbContext<CustomIdentityUser>
     {
     }
 
-
+    public DbSet<UserEntity> UsersInformations { get; set; } = null!;
 
 }

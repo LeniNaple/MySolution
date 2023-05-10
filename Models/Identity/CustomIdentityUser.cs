@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using FinalSol.Models.Entities;
+using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace FinalSol.Models.Identity
 {
@@ -12,5 +14,6 @@ namespace FinalSol.Models.Identity
         public string LastName { get; set; } = null!;
 
 
+        public Guid AdressId { get; set; } 
     }
 }

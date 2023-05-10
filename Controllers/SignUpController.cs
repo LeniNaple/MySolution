@@ -1,4 +1,6 @@
-﻿using FinalSol.Models.Identity;
+﻿using FinalSol.Contexts;
+using FinalSol.Models.Entities;
+using FinalSol.Models.Identity;
 using FinalSol.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +13,16 @@ public class SignUpController : Controller
 
     private readonly UserManager<CustomIdentityUser> _userManager;
 
-    public SignUpController(UserManager<CustomIdentityUser> userManager, SignInManager<CustomIdentityUser> signInManager)
+    private readonly IdentityContext _identityContext;
+
+
+    public SignUpController(UserManager<CustomIdentityUser> userManager, SignInManager<CustomIdentityUser> signInManager, IdentityContext identityContext)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _identityContext = identityContext;
     }
-   
+
 
 
     [HttpGet]
@@ -38,9 +44,22 @@ public class SignUpController : Controller
 
             if (await _userManager.FindByNameAsync(viewModel.Email) == null)
             {
-                var result = await _userManager.CreateAsync(viewModel, viewModel.Password);
+
+                CustomIdentityUser customIdentityUser = viewModel;
+                var result = await _userManager.CreateAsync(customIdentityUser, viewModel.Password);
+
+                UserEntity userEntity = viewModel;
+                userEntity.UserId = customIdentityUser.AdressId;
+
+                _identityContext.UsersInformations.Add(viewModel);
+                await _identityContext.SaveChangesAsync();
+
+                
+
                 if (result.Succeeded)
+                {
                     return RedirectToAction("Index", "Login");
+                }
                 else
                     ModelState.AddModelError("", "Something went wrong.");
             }
