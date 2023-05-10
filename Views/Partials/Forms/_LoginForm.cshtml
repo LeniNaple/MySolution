@@ -1,31 +1,33 @@
 ﻿@*Login Form Partial*@
 
+@model UserLoginViewModel
+
 
 <section class="login-form">
     <div class="container">
         <div class="title">Please Login to Your Account</div>
         <div class="underline"></div>
-        <form novalidate>
+        <form method="post" novalidate>
             <div class="email form-group">
                 <div class="email-text">
-                    <label for="email">Your Email*</label>
+                    <label asp-for="Email">Your Email*</label>
                     <a asp-controller="SignUp" asp-action="Index">Don't have an Account yet?</a>
                 </div>
-                <input id="email" type="text" class="invalid">
-                <span class="error">Your email is required</span>
+                <input asp-for="Email" id="email" type="text" class="invalid">
+                <span asp-validation-for="Email" class="error">Your email is required</span>
             </div>
             <div class="password form-group">
                 <div class="password-text">
-                    <label for="password">Your Password*</label>
+                    <label asp-for="Password">Your Password*</label>
                     <a href="#">Forgot Your Password ? </a>
                 </div>
-                <input id="password" type="password" class="invalid">
-                <span class="error">Your password is required</span>
+                <input asp-for="Password" id="password" type="password" class="invalid">
+                <span asp-validation-for="Password" class="error">Your password is required</span>
             </div>
             <div class="terms form-checkbox-group">
                 <label class="custom-checkbox">
                     Please keep me logged in
-                    <input type="checkbox" checked="checked">
+                    <input asp-for="RememberMe" type="checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>
             </div>

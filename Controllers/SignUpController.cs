@@ -7,18 +7,25 @@ namespace FinalSol.Controllers;
 
 public class SignUpController : Controller
 {
-    
+    private readonly SignInManager<CustomIdentityUser> _signInManager;
+
     private readonly UserManager<CustomIdentityUser> _userManager;
 
-    public SignUpController(UserManager<CustomIdentityUser> userManager)
+    public SignUpController(UserManager<CustomIdentityUser> userManager, SignInManager<CustomIdentityUser> signInManager)
     {
         _userManager = userManager;
+        _signInManager = signInManager;
     }
+   
 
 
     [HttpGet]
     public IActionResult Index()
     {
+        if (_signInManager.IsSignedIn(User))
+        {
+            return RedirectToAction("Index", "Home");
+        }
         return View();
     }
 
