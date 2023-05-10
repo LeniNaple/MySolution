@@ -1,7 +1,5 @@
 using FinalSol.Contexts;
 using FinalSol.Models.Identity;
-using FinalSol.Repositories;
-using FinalSol.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserSql")));
-
-builder.Services.AddScoped<AuthenticationService>();
-builder.Services.AddScoped<UserRepository>();
 
 builder.Services.AddIdentity<CustomIdentityUser, IdentityRole>(x =>
 {

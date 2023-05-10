@@ -42,7 +42,6 @@ public class UserRegistrationViewModel
         return new CustomIdentityUser
         {
             UserName = viewModel.Email,
-
             FirstName = viewModel.FirstName,
             LastName = viewModel.LastName,
             Email = viewModel.Email,
