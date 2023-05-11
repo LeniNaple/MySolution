@@ -13,4 +13,10 @@ public class IdentityContext : IdentityDbContext<CustomIdentityUser>
 
     public DbSet<UserEntity> UsersInformations { get; set; } = null!;
 
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+
+    }
 }

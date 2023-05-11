@@ -4,14 +4,13 @@
     <div class="container">
         <div class="logo"><img src="images/logo.svg" alt=""></div>
 
-        @if (ViewData["Title"] == "Home" | ViewData["Title"] == "Contact us" | ViewData["Title"] == "Product")
+        @if (ViewData["Title"] == "Home" | ViewData["Title"] == "Contact us" | ViewData["Title"] == "Product" | ViewData["Title"] == "Admin")
         {
             <nav id="menu" class="menu-links">
                 <a class="link" asp-controller="Home" asp-action="Index">HOME</a>
                 <a class="link" asp-controller="Product" asp-action="Index">PRODUCTS</a>
                 <a class="link" asp-controller="Contact" asp-action="Index">CONTACT</a>
             </nav>
-
         } 
 
 

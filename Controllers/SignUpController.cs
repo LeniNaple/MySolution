@@ -1,9 +1,11 @@
 ﻿using FinalSol.Contexts;
 using FinalSol.Models.Entities;
 using FinalSol.Models.Identity;
+using FinalSol.Services;
 using FinalSol.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalSol.Controllers;
 
@@ -15,12 +17,15 @@ public class SignUpController : Controller
 
     private readonly IdentityContext _identityContext;
 
+    private readonly SeedService _seedService;
 
-    public SignUpController(UserManager<CustomIdentityUser> userManager, SignInManager<CustomIdentityUser> signInManager, IdentityContext identityContext)
+
+    public SignUpController(UserManager<CustomIdentityUser> userManager, SignInManager<CustomIdentityUser> signInManager, IdentityContext identityContext, SeedService seedService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _identityContext = identityContext;
+        _seedService = seedService;
     }
 
 
@@ -45,18 +50,36 @@ public class SignUpController : Controller
             if (await _userManager.FindByNameAsync(viewModel.Email) == null)
             {
 
-                CustomIdentityUser customIdentityUser = viewModel;
-                var result = await _userManager.CreateAsync(customIdentityUser, viewModel.Password);
+        //Move to a service later on!!!
+                bool result = false;
+                try
+                {
+                    await _seedService.SeedRoles();
+                    var roleName = "user";
 
-                UserEntity userEntity = viewModel;
-                userEntity.UserId = customIdentityUser.AdressId;
+                    if (!await _userManager.Users.AnyAsync())
+                        roleName = "admin";
+                    else
+                        roleName = "user";
 
-                _identityContext.UsersInformations.Add(viewModel);
-                await _identityContext.SaveChangesAsync();
 
-                
+                    CustomIdentityUser customIdentityUser = viewModel;
+                    await _userManager.CreateAsync(customIdentityUser, viewModel.Password);
 
-                if (result.Succeeded)
+                    await _userManager.AddToRoleAsync(customIdentityUser, roleName);
+
+                    UserEntity userEntity = viewModel;
+                    _identityContext.UsersInformations.Add(userEntity);
+                    await _identityContext.SaveChangesAsync();
+                    result = true;
+
+                } catch
+                {
+                    result = false;
+                }
+
+
+                if (result == true)
                 {
                     return RedirectToAction("Index", "Login");
                 }

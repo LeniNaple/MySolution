@@ -13,6 +13,7 @@ public class LogoutController : Controller
         _signInManager = signInManager;
     }
 
+
     public async Task<IActionResult> Index()
     {
         if (_signInManager.IsSignedIn(User))
