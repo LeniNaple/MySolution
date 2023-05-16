@@ -1,4 +1,5 @@
-﻿@*Admin Index View*@
+﻿@using FinalSol.Services;
+@*Admin Index View*@
 
 
 @{
@@ -6,3 +7,12 @@
 }
 
 <partial name="/Views/Partials/_HeaderPartial.cshtml" />
+
+
+@{
+
+    var users = await UserService.GetAllAsync();
+
+}
+    
+

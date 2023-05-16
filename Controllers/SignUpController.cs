@@ -11,16 +11,16 @@ namespace FinalSol.Controllers;
 
 public class SignUpController : Controller
 {
-    private readonly SignInManager<CustomIdentityUser> _signInManager;
+    private readonly SignInManager<AppUser> _signInManager;
 
-    private readonly UserManager<CustomIdentityUser> _userManager;
+    private readonly UserManager<AppUser> _userManager;
 
     private readonly IdentityContext _identityContext;
 
     private readonly SeedService _seedService;
 
 
-    public SignUpController(UserManager<CustomIdentityUser> userManager, SignInManager<CustomIdentityUser> signInManager, IdentityContext identityContext, SeedService seedService)
+    public SignUpController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IdentityContext identityContext, SeedService seedService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -63,12 +63,12 @@ public class SignUpController : Controller
                         roleName = "user";
 
 
-                    CustomIdentityUser customIdentityUser = viewModel;
+                    AppUser customIdentityUser = viewModel;
                     await _userManager.CreateAsync(customIdentityUser, viewModel.Password);
 
                     await _userManager.AddToRoleAsync(customIdentityUser, roleName);
 
-                    UserEntity userEntity = viewModel;
+                    AdressEntity userEntity = viewModel;
                     _identityContext.UsersInformations.Add(userEntity);
                     await _identityContext.SaveChangesAsync();
                     result = true;

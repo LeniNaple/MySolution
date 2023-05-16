@@ -38,31 +38,26 @@ public class UserRegistrationViewModel
 
     public string? ProfileImageUrl { get; set; }
 
-    public Guid AdressId { get; set; } = Guid.NewGuid();
 
-    public static implicit operator CustomIdentityUser(UserRegistrationViewModel viewModel)
+    public static implicit operator AppUser(UserRegistrationViewModel viewModel)
     {
-        return new CustomIdentityUser
+        return new AppUser
         {
             UserName = viewModel.Email,
             FirstName = viewModel.FirstName,
             LastName = viewModel.LastName,
             Email = viewModel.Email,
             PhoneNumber = viewModel.PhoneNumber,
-            AdressId = viewModel.AdressId,
         };
     }
 
-    public static implicit operator UserEntity(UserRegistrationViewModel viewModel)
+    public static implicit operator AdressEntity(UserRegistrationViewModel viewModel)
     {
-        return new UserEntity
+        return new AdressEntity
         {
-            UserId = viewModel.AdressId,
             StreetName = viewModel.StreetName,
             PostalCode = viewModel.PostalCode,
             City = viewModel.City,
-            CompanyName = viewModel.CompanyName,
-            ProfileImageUrl = viewModel.ProfileImageUrl
         };
     }
 

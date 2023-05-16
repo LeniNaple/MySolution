@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserSql")));
+
+
+builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserDbSql")));
 builder.Services.AddScoped<SeedService>();
 
 
-builder.Services.AddIdentity<CustomIdentityUser, IdentityRole>(x =>
+builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;
     x.User.RequireUniqueEmail = true;

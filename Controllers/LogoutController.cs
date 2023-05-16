@@ -6,9 +6,9 @@ namespace FinalSol.Controllers;
 
 public class LogoutController : Controller
 {
-    private readonly SignInManager<CustomIdentityUser> _signInManager;
+    private readonly SignInManager<AppUser> _signInManager;
 
-    public LogoutController(SignInManager<CustomIdentityUser> signInManager)
+    public LogoutController(SignInManager<AppUser> signInManager)
     {
         _signInManager = signInManager;
     }

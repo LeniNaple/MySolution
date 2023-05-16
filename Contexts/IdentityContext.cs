@@ -3,19 +3,16 @@ using FinalSol.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinalSol.Contexts;
+namespace FinalSol.Contexts { 
 
-public class IdentityContext : IdentityDbContext<CustomIdentityUser>
-{
-    public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
+    public class IdentityContext : IdentityDbContext<AppUser>
     {
-    }
+        public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
+        {
+        }
 
-    public DbSet<UserEntity> UsersInformations { get; set; } = null!;
-
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        base.OnModelCreating(builder);
+        public DbSet<AdressEntity> AspNetAdresses { get; set; } 
+        public DbSet<UserAdressEntity> AspNetUsersAdresses { get; set; } 
 
 
     }
